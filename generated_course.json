@@ -1,0 +1,604 @@
+{
+  "course_title": "Trained to React: Gesture-Triggered Sound with micro:bit",
+  "grade_band": "9-12",
+  "course_description": "Design a motion-recognition system that turns micro:bit gestures into programmed sound outputs. Collect accelerometer data, train and evaluate a CreateAI model, build a MakeCode response, and investigate the reliability of an embedded AI interaction.",
+  "equipment_and_training": "7 Lesson Hours; Equipment: micro:bit, USB cable, battery pack (optional); Software: micro:bit CreateAI; Curriculum and supporting materials; ongoing product and curriculum support; professional development; facilitation by a trained STEM instructor (optional).",
+  "lessons": [
+    {
+      "lesson_number": 1,
+      "title": "Connect the micro:bit and Explore Motion Input",
+      "learning_target": "Connect a compatible micro:bit to CreateAI, observe how movement changes accelerometer readings, and distinguish motion input from sound output.",
+      "content": "Today’s focus is the difference between what a device senses and what it produces.\n\nMotion in, sound out\nmicro:bit CreateAI trains machine-learning models using accelerometer/motion data, not audio or images. It can trigger programmed sound output through MakeCode in response to recognized motion. In this project, movement is the input and a programmed sound is the output—not the other way around.\n\nAn accelerometer measures acceleration along three axes, labeled x, y, and z. Its readings include the effect of gravity, so a stationary device does not necessarily have three zero readings. Rotating the device changes how gravity is distributed across its sensing axes. Moving it can also change its readings.\n\nA micro:bit V2 has a built-in speaker on its back. For this course, check for the V2 board and locate that speaker, but do not program a sound yet.\n\nSetup boundary\nThe supplied CreateAI capability description does not establish browser requirements, connection-software installation, pairing procedures, or a live accelerometer display. Accordingly, leave those procedures pending rather than inventing setup steps. This lesson’s supported activity covers hardware preparation, physical exploration, and interpretation of illustrative readings. Do not report a completed CreateAI connection or observations of live readings. Completing those parts of the learning target requires verified setup instructions and confirmation of the relevant tool capabilities.",
+      "activity": "1. Inspect the hardware.\nLocate the micro:bit’s version marking and check whether it identifies a V2 board. Locate the built-in speaker on the back. If the version is unclear or the speaker cannot be identified, ask the teacher to verify the board before proceeding.\n\n2. Prepare—but do not claim to complete—the connection.\nFind the board’s USB socket and the matching end of the supplied cable. Gently insert that end without forcing it. Leave the other end unconnected: a USB host/access device is not specified in the equipment list. Mark your setup status as “cable attached to board; powered connection and CreateAI pairing pending.” Leave the optional battery pack disconnected.\n\n3. Explore orientation safely.\nWith the board supported close to the work surface and without pulling the cable, hold it still with its front facing upward. Slowly turn it onto an edge, then return it to its original orientation. Describe what you physically changed. Do not describe these movements as measured data: no live readings have been obtained.\n\n4. Interpret example readings.\nUse this illustrative table. These are simplified readings from a generic accelerometer, not measurements collected from your micro:bit. The unit g represents acceleration relative to Earth’s gravity.\n\nPosition A, stationary: x = 0 g; y = 0 g; z = 1 g.\nPosition B, stationary after rotation: x = 0 g; y = 1 g; z = 0 g.\nPosition A again, stationary: x = 0 g; y = 0 g; z = 1 g.\n\nDiscuss: Which axes changed between A and B? Why can a stationary sensor have a nonzero reading? What pattern returns when the sensor returns to A? Do not assume these example positions identify the axes on your particular board.\n\n5. Trace the direction of information.\nComplete this statement aloud: “The input for our project is ____. The eventual output is ____.” Then explain why making a noise near the device is not an example of the input used to train this project.\n\n6. Give a status report.\nReport three things: the board version you identified, one interpretation of the example readings, and which setup tasks remain pending. Stop before defining gesture classes, collecting labeled examples, training a model, or programming sounds.",
+      "claims": [
+        {
+          "text": "micro:bit CreateAI trains machine-learning models using accelerometer/motion data, not audio or images.",
+          "claim_type": "hard_fact",
+          "citation": {
+            "source": "micro:bit Educational Foundation",
+            "detail": "Official CreateAI product page and user guide; motion-data training, as specified in the supplied capabilities summary.",
+            "url": "https://microbit.org/createai/"
+          }
+        },
+        {
+          "text": "It can trigger programmed sound output through MakeCode in response to recognized motion.",
+          "claim_type": "hard_fact",
+          "citation": {
+            "source": "micro:bit Educational Foundation",
+            "detail": "Official CreateAI product page and user guide; programmed sound responses, as specified in the supplied capabilities summary.",
+            "url": "https://microbit.org/createai/"
+          }
+        },
+        {
+          "text": "In this project, movement is the input and a programmed sound is the output—not the other way around.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "An accelerometer measures acceleration along three axes, labeled x, y, and z.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Its readings include the effect of gravity, so a stationary device does not necessarily have three zero readings.",
+          "claim_type": "causal",
+          "citation": null
+        },
+        {
+          "text": "Rotating the device changes how gravity is distributed across its sensing axes.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Moving it can also change its readings.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "A micro:bit V2 has a built-in speaker on its back.",
+          "claim_type": "hard_fact",
+          "citation": {
+            "source": "micro:bit Educational Foundation",
+            "detail": "micro:bit overview: board features and rear-view identification of the built-in speaker on V2.",
+            "url": "https://microbit.org/get-started/user-guide/overview/"
+          }
+        },
+        {
+          "text": "The supplied CreateAI capability description does not establish browser requirements, connection-software installation, pairing procedures, or a live accelerometer display.",
+          "claim_type": "hard_fact",
+          "citation": {
+            "source": "Supplied course input",
+            "detail": "third_party_software entry for micro:bit CreateAI, capabilities_summary; these setup and display capabilities are not specified.",
+            "url": null
+          }
+        },
+        {
+          "text": "The unit g represents acceleration relative to Earth’s gravity.",
+          "claim_type": "mechanistic",
+          "citation": null
+        }
+      ],
+      "assessment": {
+        "question": "For this project, which description correctly distinguishes input from output?",
+        "options": [
+          "A spoken word is the input, and motion is the output.",
+          "Movement measured by the accelerometer is the input, and a programmed sound is the output.",
+          "A camera image is the input, and acceleration is the output.",
+          "A programmed sound is both the training input and the output."
+        ],
+        "correct_answer": "Movement measured by the accelerometer is the input, and a programmed sound is the output.",
+        "supporting_claim_index": 2
+      },
+      "equipment_used": [
+        "micro:bit",
+        "USB cable"
+      ],
+      "introduces": [
+        "checking micro:bit V2 compatibility and locating its built-in speaker",
+        "connecting micro:bit via USB",
+        "opening micro:bit CreateAI in a supported browser",
+        "installing CreateAI connection software on micro:bit and pairing it with the browser",
+        "reading x/y/z accelerometer data",
+        "distinguishing accelerometer input from programmed sound output"
+      ],
+      "prerequisites": []
+    },
+    {
+      "lesson_number": 2,
+      "title": "Define Gestures and a No-Action Class",
+      "learning_target": "Define two distinguishable gestures and an idle/background class, then plan labeled recordings with consistent device placement and varied repetitions.",
+      "content": "Today, design a motion-recording plan—not a trained system. Build on your previous orientation exploration and example-data discussion; live data collection is still pending.\n\nA class is a category the model will learn to recognize. In supervised learning, a label identifies the intended class of a training example. Choose labels that describe movements rather than the sounds you might eventually want.\n\nDefine two deliberate gestures and one idle/background class. The idle/background class represents examples of conditions in which you intend no action, including stillness and selected ordinary movements. Calling a class “no action” does not itself program an output behavior.\n\nMake each gesture definition specific: starting position, movement direction, movement size, and ending position. Changing a sensor’s orientation changes how physical acceleration is distributed across its x/y/z axes. Keeping the device’s placement and starting orientation consistent reduces one source of variation, making it easier to compare examples of the intended gestures.\n\nPlan variation within those definitions. Varied repetitions provide examples of more than one way to perform a class. Equal planned counts prevent any class from being outnumbered in the plan, but do not guarantee accurate recognition.\n\nFinally, reserve new performances for later evaluation. Evaluating on fresh performances checks recognition on examples that were not used for training. Today you will plan those performances, not record them or test a model.",
+      "activity": "Planning workshop: three classes, one consistent setup\n\nUse the board and its already-attached USB cable from the previous lesson. Leave the cable’s other end unconnected and the optional battery pack disconnected. Do not repeat connection preparation or claim that live readings are available. Deliver your plan aloud; no additional recording equipment is needed today.\n\n1. Agree on a device-placement rule.\nHold the board gently by its edges, close to the work surface, with the front facing upward and the USB socket pointing away from you. Keep the cable slack. Use the same hand and grip for all rehearsals. If the cable restricts a movement, make the movement smaller rather than pulling the cable.\n\n2. Rehearse two candidate gestures.\n• SIDE: From the agreed starting pose, move the board a short distance to the left and back to the starting location, keeping its face upward.\n• LIFT: From the same starting pose, lift the board a short distance upward and lower it back, keeping its face upward.\nPerform these slowly without tossing, striking, or releasing the board. Agree on a comfortable movement size for each and demonstrate its start and finish. Treat these as candidate definitions, not proof that a model can distinguish them.\n\n3. Define BACKGROUND and its boundaries.\nUse three planned background conditions: resting face-up on the work surface, held still in the agreed pose, and tiny grip adjustments without a deliberate SIDE or LIFT movement. Agree on what counts as a tiny adjustment by demonstrating it. If a demonstration resembles a deliberate gesture, revise the definitions before proceeding.\n\nFor each class, say: “This class includes ____. It does not include ____.”\n\n4. Explain a balanced recording plan.\nUse this proposed target for later collection—not a required sample count or a guarantee of success:\n• SIDE: 12 examples—4 slower, 4 comfortable-speed, and 4 slightly quicker performances.\n• LIFT: 12 examples—the same speed grouping.\n• BACKGROUND: 12 examples—4 resting, 4 held still, and 4 with tiny grip adjustments.\nKeep every performance gentle and within the agreed movement definition. Keep the placement rule unchanged. Count the planned examples aloud: 12 per class, 36 altogether. These are planned examples, not collected data.\n\n5. Check whether the definitions are usable.\nAsk a partner to name the intended class while you demonstrate SIDE, LIFT, and one background condition. Ask the partner to repeat each definition in their own words. Resolve any disagreement about directions, movement size, or class boundaries. Do not call this a model test.\n\n6. Reserve fresh evaluation performances.\nAdd this commitment to the plan: “After training in a later lesson, we will make three new performances per class for evaluation. Those particular performances will not be training examples.” Do not perform that evaluation set now.\n\n7. Give a handoff report.\nState your three labels, each class’s inclusion and exclusion rules, your placement rule, the planned counts and variations, and your fresh-evaluation commitment. End with: “Connection and recording remain pending. Today we completed definitions and a recording plan.” Stop before collecting examples, training, or programming outputs.",
+      "claims": [
+        {
+          "text": "A class is a category the model will learn to recognize.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "In supervised learning, a label identifies the intended class of a training example.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "The idle/background class represents examples of conditions in which you intend no action, including stillness and selected ordinary movements.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Calling a class “no action” does not itself program an output behavior.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Changing a sensor’s orientation changes how physical acceleration is distributed across its x/y/z axes.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Keeping the device’s placement and starting orientation consistent reduces one source of variation, making it easier to compare examples of the intended gestures.",
+          "claim_type": "causal",
+          "citation": null
+        },
+        {
+          "text": "Varied repetitions provide examples of more than one way to perform a class.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Equal planned counts prevent any class from being outnumbered in the plan, but do not guarantee accurate recognition.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Evaluating on fresh performances checks recognition on examples that were not used for training.",
+          "claim_type": "mechanistic",
+          "citation": null
+        }
+      ],
+      "assessment": {
+        "question": "Why does the recording plan keep device placement and starting orientation consistent while allowing modest differences in gesture speed?",
+        "options": [
+          "Consistent placement removes the need for a background class.",
+          "Consistent placement reduces one source of variation so the intended gestures are easier to compare.",
+          "Consistent placement guarantees that every future gesture will be recognized.",
+          "Consistent placement automatically programs the no-action response."
+        ],
+        "correct_answer": "Consistent placement reduces one source of variation so the intended gestures are easier to compare.",
+        "supporting_claim_index": 5
+      },
+      "equipment_used": [
+        "micro:bit",
+        "USB cable"
+      ],
+      "introduces": [
+        "defining gesture classes and an idle/background class",
+        "using class labels for supervised learning",
+        "controlling micro:bit placement and orientation",
+        "planning varied and balanced motion recordings",
+        "reserving fresh gesture performances for evaluation"
+      ],
+      "prerequisites": [
+        "reading x/y/z accelerometer data",
+        "distinguishing accelerometer input from programmed sound output"
+      ]
+    },
+    {
+      "lesson_number": 3,
+      "title": "Build a Labeled Motion Dataset",
+      "learning_target": "Record labeled examples in CreateAI and inspect the dataset for mislabeled, interrupted, or underrepresented motion samples.",
+      "content": "Today’s focus is dataset quality: deciding whether examples match their labels, capture the intended motion, and represent every planned class.\n\nmicro:bit CreateAI trains a machine learning model on accelerometer/motion data, not audio or images. Your SIDE, LIFT, and BACKGROUND definitions from the previous lesson remain the collection plan.\n\nCollection boundary: Without a supplied browser-access device, we cannot complete the planned browser-based recording task with the listed equipment. Connection and recording are still pending from the earlier lessons. Do not assume access to class-creation, recording, sample-review, or editing controls beyond the supplied tool description. Instead, complete the clearly labeled practice audit below. This is preparation for dataset collection, not a claim that you have recorded examples or fully met the recording target.\n\nUse three checks:\n\n• Label accuracy: A labeled training example pairs input data with an intended class. If a performance meets the LIFT definition but carries the SIDE label, the label and performance disagree.\n• Recording quality: An interrupted recording may omit part of the intended gesture, so it should be flagged for review rather than automatically accepted as a complete example.\n• Representation: Check usable examples in each class and coverage of the variations in your plan. Equal class counts do not establish that all planned variations are represented.\n\nAn unusual-looking example is not automatically a bad example: a complete, correctly labeled performance can still differ in speed from other examples. Judge it against the agreed gesture definition rather than rejecting it simply for being different.",
+      "activity": "Practice dataset audit — no live recording\n\nUse the class definitions and placement rule you already established. Leave the board and its already-attached USB cable as they are; do not repeat setup, rehearse a new gesture plan, or claim that measurements have been collected. Give your audit aloud.\n\n1. Read this fictional collection report.\nThese are invented audit notes, not recordings from your board or output from a software interface.\n\n• SIDE: 12 reported examples. Eleven are described as complete SIDE performances. One, S07, is labeled SIDE, but the observer reports a complete LIFT performance.\n• LIFT: 12 reported examples. Ten are described as complete LIFT performances. Two, L03 and L09, ended before the lowering movement was captured.\n• BACKGROUND: 8 reported examples. Four show resting and four show holding still. None show the planned tiny grip adjustments. All eight are described as complete and correctly labeled.\n\n2. Audit label accuracy.\nName the example with a label-performance disagreement. Explain the disagreement using the existing class definitions. Recommend that its label and original performance be checked before it is accepted. Do not assume that any software offers relabeling or deletion.\n\n3. Audit recording quality.\nName the two interrupted examples. Explain what part of the intended motion is missing. Recommend collecting complete replacements when recording becomes available; do not perform or record replacements now.\n\n4. Recount provisionally usable examples.\nFor this exercise, set aside S07, L03, and L09. Count only the remaining examples described in the report as complete and correctly labeled. State the count for each class and identify the smallest group.\n\n5. Check coverage, not just totals.\nCompare the BACKGROUND report with your existing plan. Which background condition is absent? Explain why collecting more resting examples alone would not fill that gap.\n\n6. Challenge an overstrict audit rule.\nConsider this proposed rule: “Reject every example that is slower than the others.” Explain why that rule conflicts with your existing plan for varied speeds. Replace it with a check for a complete performance that still meets its class definition.\n\n7. Give a handoff report.\nInclude the suspect example IDs, your provisional usable counts, the missing background condition, and your recommended collection priorities. Close with: “We audited a fictional dataset. Live connection, labeled recording, and inspection of actual samples remain pending.” Stop before training, testing predictions, or programming sounds.",
+      "claims": [
+        {
+          "text": "micro:bit CreateAI trains a machine learning model on accelerometer/motion data, not audio or images.",
+          "claim_type": "hard_fact",
+          "citation": {
+            "source": "micro:bit Educational Foundation",
+            "detail": "Official CreateAI product page and user guide; motion-based machine learning, consistent with the supplied capabilities summary.",
+            "url": "https://microbit.org/createai/"
+          }
+        },
+        {
+          "text": "Without a supplied browser-access device, we cannot complete the planned browser-based recording task with the listed equipment.",
+          "claim_type": "causal",
+          "citation": null
+        },
+        {
+          "text": "A labeled training example pairs input data with an intended class.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "If a performance meets the LIFT definition but carries the SIDE label, the label and performance disagree.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "An interrupted recording may omit part of the intended gesture, so it should be flagged for review rather than automatically accepted as a complete example.",
+          "claim_type": "causal",
+          "citation": null
+        },
+        {
+          "text": "Equal class counts do not establish that all planned variations are represented.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "An unusual-looking example is not automatically a bad example: a complete, correctly labeled performance can still differ in speed from other examples.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "SIDE: 12 reported examples. Eleven are described as complete SIDE performances. One, S07, is labeled SIDE, but the observer reports a complete LIFT performance.",
+          "claim_type": "pedagogical",
+          "citation": null
+        },
+        {
+          "text": "LIFT: 12 reported examples. Ten are described as complete LIFT performances. Two, L03 and L09, ended before the lowering movement was captured.",
+          "claim_type": "pedagogical",
+          "citation": null
+        },
+        {
+          "text": "BACKGROUND: 8 reported examples. Four show resting and four show holding still. None show the planned tiny grip adjustments. All eight are described as complete and correctly labeled.",
+          "claim_type": "pedagogical",
+          "citation": null
+        }
+      ],
+      "assessment": {
+        "question": "A team reaches 12 examples in each class, but its BACKGROUND examples contain only resting—even though the plan also includes holding still and tiny grip adjustments. Which conclusion is justified?",
+        "options": [
+          "The dataset is ready because equal counts guarantee complete coverage.",
+          "The class counts are balanced, but planned background variations are still missing.",
+          "The resting examples must all be mislabeled.",
+          "The team should remove the BACKGROUND class."
+        ],
+        "correct_answer": "The class counts are balanced, but planned background variations are still missing.",
+        "supporting_claim_index": 5
+      },
+      "equipment_used": [],
+      "introduces": [
+        "creating labeled classes in CreateAI",
+        "recording accelerometer samples in CreateAI",
+        "checking motion samples for label accuracy and recording quality",
+        "checking sample balance across classes"
+      ],
+      "prerequisites": [
+        "connecting micro:bit via USB",
+        "opening micro:bit CreateAI in a supported browser",
+        "installing CreateAI connection software on micro:bit and pairing it with the browser",
+        "reading x/y/z accelerometer data",
+        "defining gesture classes and an idle/background class",
+        "using class labels for supervised learning",
+        "controlling micro:bit placement and orientation",
+        "planning varied and balanced motion recordings",
+        "reserving fresh gesture performances for evaluation"
+      ]
+    },
+    {
+      "lesson_number": 4,
+      "title": "Train a Model and Examine Its Mistakes",
+      "learning_target": "Train a CreateAI model, compare its predictions with intended labels on fresh performances, and identify commonly confused classes.",
+      "content": "Today’s boundary\nContinue from your fictional dataset audit—not from a collected dataset. With connection and actual recording still pending, and no browser-access device listed, do not claim to train or evaluate a real model today. Instead, practice interpreting fictional predictions. For this lesson, use the supplied prediction records rather than assume an unlisted live-testing feature. The live portion of the learning target remains pending.\n\nTraining versus programming\nmicro:bit CreateAI trains a machine-learning model using accelerometer/motion data, not audio or images. Training a classifier uses labeled examples to learn patterns for assigning input to classes. An explicitly programmed classification rule instead specifies the decision conditions directly, such as “if a measured value exceeds this threshold, choose this class.” Learning from examples does not guarantee that every new performance will receive its intended label.\n\nReading prediction results\nThe intended label is the class the evaluator meant to perform; the predicted label is the class assigned by the model. Fresh evaluation performances are kept out of training so that the comparison checks performances the model was not trained on.\n\nIn an intended-versus-predicted table, rows represent intended labels and columns represent predicted labels. Counts on the matching-label diagonal represent correct classifications; counts outside that diagonal represent mismatches. The largest off-diagonal count identifies the most frequent intended-to-predicted confusion in that evaluation set. A small evaluation set does not establish how reliably a model will classify all future performances.\n\nKeep classification separate from the project’s later sound-response work. Today, stop at interpreting predictions and identifying confusion.",
+      "activity": "Prediction-reading workshop — fictional results only\n\nLeave the existing board and cable setup unchanged. Work aloud with a partner using the records below; no new equipment or software interaction is required.\n\n1. Establish the status.\nSay: “Our earlier work produced class definitions, a recording plan, and a fictional dataset audit. These prediction records are another practice example, not output from our board.” Do not treat the audit notes as a trainable dataset.\n\n2. Explain what training would do.\nUsing SIDE, LIFT, and BACKGROUND, explain the difference between learning from labeled motion examples and writing explicit conditions for choosing a label. Do not create a new dataset, invent a software control, or program a response.\n\n3. Compare intended and predicted labels.\nImagine a hypothetical model receiving three fresh performances per class. These invented records are not evidence about your gestures or a real model:\n\nTrial | Intended | Predicted\n1 | SIDE | SIDE\n2 | SIDE | LIFT\n3 | SIDE | SIDE\n4 | LIFT | SIDE\n5 | LIFT | LIFT\n6 | LIFT | SIDE\n7 | BACKGROUND | BACKGROUND\n8 | BACKGROUND | BACKGROUND\n9 | BACKGROUND | BACKGROUND\n\nFor each trial, say “match” or “mismatch.” For every mismatch, name both labels in order: “intended ___, predicted ___.”\n\n4. Build the comparison table aloud.\nUse rows in this order: SIDE, LIFT, BACKGROUND. Use columns in that same order. One partner reads the trial records while the other reports each row’s three counts:\n\nIntended SIDE: predicted SIDE ___; LIFT ___; BACKGROUND ___.\nIntended LIFT: predicted SIDE ___; LIFT ___; BACKGROUND ___.\nIntended BACKGROUND: predicted SIDE ___; LIFT ___; BACKGROUND ___.\n\nSwitch roles and check each row against the records. Check that each row totals three and all cells together total nine.\n\n5. Identify the confusion.\nWhich off-diagonal cell has the largest count? State the confusion with its direction and count. Then identify the two classes involved. Does the reverse-direction confusion have the same count? Support your answer with trial numbers.\n\n6. Separate evidence from overclaiming.\nDiscuss this statement: “All three BACKGROUND trials matched, so the model will never confuse background movement.” Explain why the conclusion goes beyond these fictional results. Do not test changed users, orientations, or sound responses today.\n\n7. Give a handoff report.\nReport the fictional table’s most frequent confusion, the trial numbers supporting it, and why fresh performances should be separate from training examples. Close with: “We practiced evaluating fictional predictions. Actual recording, training, and live evaluation remain pending.” Stop before programming sounds or transferring a program.",
+      "claims": [
+        {
+          "text": "micro:bit CreateAI trains a machine-learning model using accelerometer/motion data, not audio or images.",
+          "claim_type": "hard_fact",
+          "citation": {
+            "source": "micro:bit Educational Foundation",
+            "detail": "Official CreateAI product page and user guide; motion-based model training, consistent with the supplied capability summary.",
+            "url": "https://microbit.org/createai/"
+          }
+        },
+        {
+          "text": "Training a classifier uses labeled examples to learn patterns for assigning input to classes.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "An explicitly programmed classification rule instead specifies the decision conditions directly, such as “if a measured value exceeds this threshold, choose this class.”",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Learning from examples does not guarantee that every new performance will receive its intended label.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "The intended label is the class the evaluator meant to perform; the predicted label is the class assigned by the model.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Fresh evaluation performances are kept out of training so that the comparison checks performances the model was not trained on.",
+          "claim_type": "causal",
+          "citation": null
+        },
+        {
+          "text": "In an intended-versus-predicted table, rows represent intended labels and columns represent predicted labels.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Counts on the matching-label diagonal represent correct classifications; counts outside that diagonal represent mismatches.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "The largest off-diagonal count identifies the most frequent intended-to-predicted confusion in that evaluation set.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "A small evaluation set does not establish how reliably a model will classify all future performances.",
+          "claim_type": "mechanistic",
+          "citation": null
+        }
+      ],
+      "assessment": {
+        "question": "Why should evaluation use fresh performances that were not included in training?",
+        "options": [
+          "To check classification on performances the model was not trained on.",
+          "To guarantee that every predicted label will be correct.",
+          "To replace learned patterns with explicitly programmed rules.",
+          "To make the intended label automatically become the predicted label."
+        ],
+        "correct_answer": "To check classification on performances the model was not trained on.",
+        "supporting_claim_index": 5
+      },
+      "equipment_used": [],
+      "introduces": [
+        "training a motion-classification model in CreateAI",
+        "evaluating live model predictions with fresh performances",
+        "tabulating intended labels against predicted labels",
+        "distinguishing learned classification from explicit programming rules"
+      ],
+      "prerequisites": [
+        "opening micro:bit CreateAI in a supported browser",
+        "installing CreateAI connection software on micro:bit and pairing it with the browser",
+        "creating labeled classes in CreateAI",
+        "recording accelerometer samples in CreateAI",
+        "checking motion samples for label accuracy and recording quality",
+        "checking sample balance across classes",
+        "controlling micro:bit placement and orientation",
+        "reserving fresh gesture performances for evaluation"
+      ]
+    },
+    {
+      "lesson_number": 5,
+      "title": "Program Gesture-to-Sound Responses",
+      "learning_target": "Open the trained model in MakeCode and program distinct sounds for the two gestures, with no sound for the idle/background class and a pause between responses.",
+      "content": "Today’s focus is the response rule: what should happen after a motion label is recognized?\n\nmicro:bit CreateAI can trigger a programmed sound output via MakeCode in response to recognized motion. That is the supported output capability for this project.\n\nScope limitation: keep actual model opening and block editing marked pending. Do not treat the previous lesson’s fictional predictions as a trained model. The supplied resources do not specify a USB host/access device or document model-opening controls, recognized-motion blocks, sound choices, or pause blocks. Omit those software steps rather than inventing them. Today’s deliverable is a platform-neutral response specification, not an executable or transferred program.\n\nA response mapping associates a recognized label with a programmed action. Use the existing SIDE, LIFT, and BACKGROUND labels; do not redefine or retrain them.\n\nFor our specification, choose two distinct intended sounds, called A and B. Assign A to SIDE and B to LIFT. Assign no new sound to BACKGROUND. Here, “no new sound” does not mean cancelling a sound that has already started.\n\nA shared waiting rule prevents either gesture from starting another sound while the response system is busy. Merely choosing different sounds does not impose a waiting period between responses. Specify one shared ready/busy state for both gesture responses, with a one-second pause after a sound finishes. This is an abstract design requirement, not a claim about available software blocks.",
+      "activity": "Response-rule workshop — specification only\n\nLeave the existing board and cable setup unchanged. Work aloud with a partner; do not connect, train, open an editor, or transfer a program.\n\n1. Specify the mapping.\nComplete these rules using your existing labels:\n• SIDE → start sound A.\n• LIFT → start sound B.\n• BACKGROUND → start no sound.\nDescribe how you would like A and B to differ, such as a higher versus lower pitch. Treat these as requested sounds, not confirmed menu choices or sounds produced today.\n\n2. Add one shared waiting rule.\nRead this platform-neutral specification aloud:\n• Begin in READY state.\n• When a label arrives, first check the state.\n• If BUSY, ignore that label for sound-start purposes; do not save it for later playback.\n• If READY and the label is BACKGROUND, do nothing and remain READY.\n• If READY and the label is SIDE or LIFT, change to BUSY before starting its assigned sound.\n• After that sound finishes, wait one second, then return to READY.\nThese are proposed response instructions, not software block names.\n\n3. Trace the instructions without making sounds.\nOne partner reads each event below. The other reports the state and whether a sound should start:\n• The system is READY; BACKGROUND arrives.\n• SIDE arrives while the system is still READY.\n• LIFT arrives while sound A is playing.\n• SIDE arrives during the one-second pause after sound A finishes.\n• The pause ends; then LIFT arrives.\nFor each decision, point to the rule that determines it. Treat these as invented label events, not model predictions or device tests.\n\n4. Review the response design.\nCheck that your specification includes two distinct intended sounds, no sound-start action for BACKGROUND, and one waiting rule shared by both gestures. Explain whether a second gesture should bypass the wait just because its label differs from the first.\n\n5. Give a handoff report.\nState the mapping and waiting rule. Close with: “We completed an abstract response specification. Actual model opening, block programming, and execution remain pending.” Stop before transferring anything or verifying sounds on the device.",
+      "claims": [
+        {
+          "text": "micro:bit CreateAI can trigger a programmed sound output via MakeCode in response to recognized motion.",
+          "claim_type": "hard_fact",
+          "citation": {
+            "source": "micro:bit Educational Foundation",
+            "detail": "Official CreateAI product page and user guide; movement recognition and programmed sound responses through MakeCode.",
+            "url": "https://microbit.org/createai/"
+          }
+        },
+        {
+          "text": "A response mapping associates a recognized label with a programmed action.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Here, “no new sound” does not mean cancelling a sound that has already started.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "A shared waiting rule prevents either gesture from starting another sound while the response system is busy.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Merely choosing different sounds does not impose a waiting period between responses.",
+          "claim_type": "mechanistic",
+          "citation": null
+        }
+      ],
+      "assessment": {
+        "question": "In this specification, SIDE starts sound A. LIFT arrives during the shared one-second pause after sound A finishes. What should happen?",
+        "options": [
+          "Sound B starts immediately because LIFT is a different label.",
+          "No new sound starts; the system is still busy.",
+          "Sound A starts again because SIDE was recognized first.",
+          "Sound B is saved to play automatically when the pause ends."
+        ],
+        "correct_answer": "No new sound starts; the system is still busy.",
+        "supporting_claim_index": 3
+      },
+      "equipment_used": [],
+      "introduces": [
+        "opening the trained CreateAI model in MakeCode",
+        "using MakeCode blocks for recognized-motion events",
+        "mapping gesture classes to built-in speaker sounds",
+        "programming no sound for the idle/background class",
+        "adding a pause to limit repeated sound responses"
+      ],
+      "prerequisites": [
+        "checking micro:bit V2 compatibility and locating its built-in speaker",
+        "distinguishing accelerometer input from programmed sound output",
+        "defining gesture classes and an idle/background class",
+        "training a motion-classification model in CreateAI",
+        "distinguishing learned classification from explicit programming rules"
+      ]
+    },
+    {
+      "lesson_number": 6,
+      "title": "Run the Gesture-to-Sound System on the Device",
+      "learning_target": "Transfer the model-enabled program to micro:bit and verify each gesture-to-sound mapping and the silent idle response without browser-based inference.",
+      "content": "Today’s goal is an end-to-end check: does each intended gesture lead to its assigned sound, and does background activity remain silent?\n\nImplementation boundary: the earlier workshops ended with an abstract response specification, not a trained model or executable program. A USB host/access device is not included in the supplied equipment, and transfer procedures and browser-independent inference are not established by the supplied software capabilities. Do not attempt an invented transfer procedure or report successful device execution. For this lesson, complete a verification-readiness and diagnostic exercise; the practical learning target remains pending.\n\nUse the existing specification: SIDE → sound A; LIFT → sound B; BACKGROUND → no new sound. Keep the shared waiting rule unchanged.\n\nAn end-to-end check compares the intended gesture, the predicted class, the programmed sound action, and the observed sound. A recognition error occurs when the predicted class differs from the intended class. A sound-mapping error occurs when the programmed sound action differs from the action assigned to the predicted class, provided the response rules allow an action at that time. A wrong prediction can therefore produce the wrong sound for the intended gesture even when the sound mapping works correctly.\n\nSilence alone does not establish correct background recognition: a waiting rule or an output failure can also prevent a new sound. For a silent-idle check, begin after any earlier sound and waiting period have ended.\n\nBrowser-independent inference means that the device, rather than a browser, computes the predicted class. Hearing a device make a sound does not by itself establish where the prediction was computed.",
+      "activity": "Verification-readiness workshop — fictional evidence, not device execution\n\nKeep the board and its already-attached cable unchanged. Work aloud with a partner. Do not repeat connection preparation, dataset planning, training, or response-rule design.\n\n1. Check the handoff honestly.\nName what is available from earlier lessons: gesture definitions, a recording plan, practice audits, fictional prediction results, and an abstract response specification. Identify the missing evidence needed for a real device check: an actual trained model, an implemented program, a supported transfer method, and confirmation of where inference runs. Mark actual transfer and device verification as pending.\n\n2. State the acceptance checks.\nUsing the existing mapping, say the expected result for one SIDE performance, one LIFT performance, and each previously defined background condition: resting, held still, and tiny grip adjustments. Keep the original placement, orientation, user, and gesture definitions. For each check, require the previous sound and waiting period to have ended. Do not run these checks today or change the rules.\n\n3. Audit these fictional end-to-end records.\nFor this exercise only, assume every trial begins READY, with no earlier sound still playing. “Command” means the sound-start action requested by the hypothetical program. These records are invented, not software logs or measurements from your board.\n\nTrial | Intended class | Predicted class | Command | Heard\n1 | SIDE | SIDE | A | A\n2 | LIFT | LIFT | B | B\n3 | BACKGROUND | BACKGROUND | None | Silence\n4 | SIDE | LIFT | B | B\n5 | LIFT | LIFT | A | A\n6 | BACKGROUND | BACKGROUND | B | B\n\nFor each row, answer three separate questions:\n• Does the prediction match the intention?\n• Does the command match the existing rule for that prediction?\n• Does the heard result match the command?\n\n4. Locate the failed comparison.\nIdentify the row showing a recognition error with a correct sound mapping. Identify the two rows showing correct recognition but incorrect sound mapping. Explain each decision by naming the two columns you compared. Do not retrain or redesign anything.\n\n5. Check the silent-idle evidence.\nCompare trials 3 and 6. Which supports the silent-background requirement for that fictional trial? Which violates it? Now imagine a record that says only “BACKGROUND intended; silence heard.” Explain what information is missing before you can judge recognition and response logic separately.\n\n6. Examine a claim about independent operation.\nConsider: “I heard a sound from the board while a browser was open, so inference must have happened on the board.” Explain why this observation is insufficient. State that an actual verification would need a supported procedure and evidence that predictions continue without browser-based inference. Do not invent controls, disconnect equipment, or claim this test has occurred.\n\n7. Give a handoff report.\nReport your acceptance checks, the recognition-error trial, the sound-mapping-error trials, and the missing evidence for independent operation. End with: “We practiced interpreting end-to-end evidence. Transfer, browser-independent inference, and actual gesture-to-sound verification remain uncompleted.” Stop before testing changed users, speeds, or orientations.",
+      "claims": [
+        {
+          "text": "An end-to-end check compares the intended gesture, the predicted class, the programmed sound action, and the observed sound.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "A recognition error occurs when the predicted class differs from the intended class.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "A sound-mapping error occurs when the programmed sound action differs from the action assigned to the predicted class, provided the response rules allow an action at that time.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "A wrong prediction can therefore produce the wrong sound for the intended gesture even when the sound mapping works correctly.",
+          "claim_type": "causal",
+          "citation": null
+        },
+        {
+          "text": "Silence alone does not establish correct background recognition: a waiting rule or an output failure can also prevent a new sound.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Browser-independent inference means that the device, rather than a browser, computes the predicted class.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Hearing a device make a sound does not by itself establish where the prediction was computed.",
+          "claim_type": "mechanistic",
+          "citation": null
+        }
+      ],
+      "assessment": {
+        "question": "A fictional trial begins READY. The intended gesture is SIDE, the predicted class is LIFT, and the program correctly commands and plays sound B for LIFT. What does this evidence show?",
+        "options": [
+          "A recognition error, with the sound mapping working correctly.",
+          "Correct recognition, with a sound-mapping error.",
+          "Both correct recognition and correct end-to-end behavior.",
+          "Proof that inference ran without a browser."
+        ],
+        "correct_answer": "A recognition error, with the sound mapping working correctly.",
+        "supporting_claim_index": 3
+      },
+      "equipment_used": [
+        "micro:bit",
+        "USB cable"
+      ],
+      "introduces": [
+        "transferring the model-enabled MakeCode program to micro:bit",
+        "running model inference and sound responses on micro:bit",
+        "verifying end-to-end gesture-to-sound mappings",
+        "distinguishing recognition errors from sound-programming errors"
+      ],
+      "prerequisites": [
+        "connecting micro:bit via USB",
+        "controlling micro:bit placement and orientation",
+        "evaluating live model predictions with fresh performances",
+        "opening the trained CreateAI model in MakeCode",
+        "using MakeCode blocks for recognized-motion events",
+        "mapping gesture classes to built-in speaker sounds",
+        "programming no sound for the idle/background class",
+        "adding a pause to limit repeated sound responses"
+      ]
+    },
+    {
+      "lesson_number": 7,
+      "title": "Audit Reliability Beyond the Original Gestures",
+      "learning_target": "Compare unintended and missed sound responses across changed users, gesture speeds, and device orientations, then recommend a specific improvement supported by recorded evidence.",
+      "content": "Today, audit fictional records rather than test a live device. Actual training, programming, transfer, and device verification remain pending from the earlier workshops; do not treat their practice records as completed deployment.\n\nA robustness audit compares performance under a reference condition with performance under deliberately changed conditions. Change one condition at a time: user, gesture speed, or starting orientation. Keeping other conditions fixed makes a performance difference easier to associate with the condition being investigated.\n\nUse the existing response specification: SIDE should produce A, LIFT should produce B, and BACKGROUND should produce silence. For this audit, count three outcomes separately:\n• Missed response: a deliberate SIDE or LIFT trial produces silence during its observation window.\n• Unintended activation: a BACKGROUND trial produces any sound during its observation window.\n• Wrong-sound response: a deliberate gesture produces the other gesture’s sound rather than its assigned sound.\n\nThe missed-response rate is silent gesture trials divided by all deliberate gesture trials. The unintended-activation rate is background trials with sound divided by all background trials. These rates use different denominators.\n\nSound-only records describe response outcomes but cannot, by themselves, distinguish recognition errors from response-programming errors. Differences across conditions can motivate a training-coverage hypothesis, but they do not prove that missing training examples caused the errors. A limited audit supports conclusions about the tested conditions, not a guarantee for every user or movement.",
+      "activity": "Fictional robustness audit — work aloud with a partner\n\nDo not change the existing board-and-cable setup or attempt unfinished deployment steps. Use the supplied records as your evidence; no live measurements or additional recording equipment are needed.\n\n1. Check the audit design.\nFor this fictional scenario, use these conditions:\n• Reference: original user, comfortable speed, original face-up orientation.\n• Changed user: second user, comfortable speed, original orientation.\n• Changed speed: original user, slower deliberate gestures, original orientation.\n• Changed orientation: original user, comfortable speed, starting with the board on an edge instead of face-up.\n\nAssume movement size, class definitions, trial counts, and observation-window length are held constant. Background trials use the same sequence of held-still and tiny-grip-adjustment tasks in every condition. Each trial begins READY after any previous sound and waiting period have ended. These are assumptions of the fictional records, not verified properties of your setup.\n\nIdentify the single changed condition in each comparison. Explain why changing both user and orientation together would make interpretation harder.\n\n2. Read the recorded outcomes.\nEach symbol below represents one separate trial. A and B mean the corresponding sound was heard; “–” means silence. Each group contains four trials of the indicated intended class. These are invented observer records, not software logs.\n\nCondition | SIDE outcomes | LIFT outcomes | BACKGROUND outcomes\nReference | A A A A | B B B B | – – – –\nChanged user | A A – – | B B B B | A – – –\nChanged speed | A A – – | B B B – | – – – –\nChanged orientation | B A A – | B B B B | A B – A\n\nOne partner reads each row. The other identifies missed responses, unintended activations, and wrong-sound responses. Switch roles and check the classifications. Do not count a wrong sound as silence.\n\n3. Report comparable rates.\nFor each condition, complete this spoken summary:\n“Missed responses: ___ out of 8 deliberate gestures. Unintended activations: ___ out of 4 background trials. Wrong-sound responses: ___ out of 8 deliberate gestures.”\n\nCompare every changed condition with the reference. Which has the most missed responses? Which has the most unintended activations? Cite the recorded outcomes, not just a general impression that one condition is ‘worse.’\n\n4. Investigate coverage without claiming a cause.\nRecall that your earlier recording plan included several gesture speeds but kept one placement rule. It was a plan, not a collected dataset.\n\nDiscuss two questions:\n• Which changed condition tests variation that the original orientation rule would exclude?\n• Does planning slower recordings prove that an eventual trained model would handle slower gestures reliably?\n\nPropose a coverage hypothesis using: “One possible explanation is ____. To check it, we would need ____.” Include actual training records and separate recognition-versus-response evidence among the evidence you would request. Do not invent that evidence.\n\n5. Recommend one improvement priority.\nChoose either reducing missed deliberate responses or reducing unintended background sounds as your priority. Give one specific recommendation for future work, supported by counts from the audit.\n\nFor example, you might recommend collecting complete SIDE, LIFT, and BACKGROUND examples in the edge-start orientation if reducing unintended sounds is your priority. Present this as a candidate improvement to investigate, not a proven fix. Do not collect examples, retrain, or change the response specification today.\n\n6. Deliver an operating-limits report.\nGive a short report containing:\n• The reference and the one-condition-at-a-time comparisons.\n• Two numerical comparisons supporting your chosen priority.\n• One proposed improvement and the evidence still needed to justify it.\n• A boundary statement: “These fictional results do not establish our device’s operating limits. An actual audit would still need fresh trials after implementation, including conditions beyond this small example.”",
+      "claims": [
+        {
+          "text": "Today, audit fictional records rather than test a live device.",
+          "claim_type": "pedagogical",
+          "citation": null
+        },
+        {
+          "text": "A robustness audit compares performance under a reference condition with performance under deliberately changed conditions.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Keeping other conditions fixed makes a performance difference easier to associate with the condition being investigated.",
+          "claim_type": "causal",
+          "citation": null
+        },
+        {
+          "text": "Missed response: a deliberate SIDE or LIFT trial produces silence during its observation window.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Unintended activation: a BACKGROUND trial produces any sound during its observation window.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Wrong-sound response: a deliberate gesture produces the other gesture’s sound rather than its assigned sound.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "The missed-response rate is silent gesture trials divided by all deliberate gesture trials.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "The unintended-activation rate is background trials with sound divided by all background trials.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "These rates use different denominators.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Sound-only records describe response outcomes but cannot, by themselves, distinguish recognition errors from response-programming errors.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "Differences across conditions can motivate a training-coverage hypothesis, but they do not prove that missing training examples caused the errors.",
+          "claim_type": "mechanistic",
+          "citation": null
+        },
+        {
+          "text": "A limited audit supports conclusions about the tested conditions, not a guarantee for every user or movement.",
+          "claim_type": "mechanistic",
+          "citation": null
+        }
+      ],
+      "assessment": {
+        "question": "A team changes only the starting orientation and observes more unintended sounds. Which conclusion is best supported?",
+        "options": [
+          "The change proves that the training set lacked edge-orientation examples.",
+          "Orientation is worth investigating, but training coverage and response logic need further evidence before naming the cause.",
+          "The team should change user, speed, and orientation together to isolate the cause.",
+          "Any sound during a deliberate gesture must count as a missed response."
+        ],
+        "correct_answer": "Orientation is worth investigating, but training coverage and response logic need further evidence before naming the cause.",
+        "supporting_claim_index": 10
+      },
+      "equipment_used": [],
+      "introduces": [
+        "designing a robustness audit that changes one condition at a time",
+        "measuring unintended activations and missed responses",
+        "connecting performance changes to training-data coverage",
+        "documenting operating limits and evidence-based improvement priorities"
+      ],
+      "prerequisites": [
+        "controlling micro:bit placement and orientation",
+        "planning varied and balanced motion recordings",
+        "tabulating intended labels against predicted labels",
+        "running model inference and sound responses on micro:bit",
+        "verifying end-to-end gesture-to-sound mappings",
+        "distinguishing recognition errors from sound-programming errors"
+      ]
+    }
+  ]
+}
